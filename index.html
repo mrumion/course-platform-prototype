@@ -1,147 +1,91 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
-    <title>Teaching Course</title>
-
+    <title>I love my friend Jesse</title>
     <style>
-
+        body {
+            background-color: maroon;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         .lesson {
-
             cursor: pointer;
-
             margin: 10px;
-
             padding: 10px;
-
             border: 1px solid #ccc;
-
         }
-
         #player {
-
             width: 640px;
-
             height: 360px;
-
         }
-
     </style>
-
 </head>
-
 <body>
-
-    <div class="lesson" id="lesson1" data-video-id="MXz28azza6c">
-
-        Lesson 1
-
+    <div class="container">
+        <h1>Welcome to the Teaching Course</h1>
+        <div class="lesson" id="lesson1" data-video-id="MXz28azza6c">
+            Lesson 1
+        </div>
+        <div class="lesson" id="lesson2" data-video-id="d-Gb_8ZxE6g">
+            Lesson 2
+        </div>
+        <div class="lesson" id="lesson3" data-video-id="FQDsSQfiUmM">
+            Lesson 3
+        </div>
+        <div id="player"></div>
     </div>
-
-    <div class="lesson" id="lesson2" data-video-id="d-Gb_8ZxE6g">
-
-        Lesson 2
-
-    </div>
-
-    <div class="lesson" id="lesson3" data-video-id="FQDsSQfiUmM">
-
-        Lesson 3
-
-    </div>
-
-    <div id="player"></div>
-
-
 
     <script>
-
         // Load the YouTube Iframe Player API asynchronously
-
         var tag = document.createElement('script');
-
         tag.src = "https://www.youtube.com/iframe_api";
-
         var firstScriptTag = document.getElementsByTagName('script')[0];
-
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-
-
         // Create a variable to store the YouTube Player
-
         var player;
 
-
-
         // Define an array to store the lesson elements
-
         var lessonElements = document.querySelectorAll('.lesson');
 
-
-
         // Add event listeners to each lesson element
-
         lessonElements.forEach(function (lesson) {
-
             lesson.addEventListener('click', function () {
-
                 var videoId = lesson.getAttribute('data-video-id');
-
                 playVideo(videoId);
-
             });
-
         });
 
-
-
         // Function to create and play the YouTube video
-
         function playVideo(videoId) {
-
             if (player) {
-
                 player.loadVideoById(videoId);
-
             } else {
-
                 player = new YT.Player('player', {
-
                     height: '360',
-
                     width: '640',
-
                     videoId: videoId,
-
                 });
-
             }
-
         }
-
-
 
         // Function called when the YouTube Iframe Player API is ready
-
         function onYouTubeIframeAPIReady() {
-
             player = new YT.Player('player', {
-
                 height: '360',
-
                 width: '640',
-
                 videoId: '',
-
             });
-
         }
-
     </script>
-
 </body>
-
 </html>
